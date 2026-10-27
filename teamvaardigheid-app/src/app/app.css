@@ -1,0 +1,10 @@
+nav button {
+    background-color: var(--kleur-primair);
+    color: var(--kleur-wit);
+}
+
+nav button.actief {
+    background-color: var(--kleur-achtergrond-groen);
+    color: var(--kleur-tekst);
+    font-weight: bold;
+}

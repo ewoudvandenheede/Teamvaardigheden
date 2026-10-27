@@ -1,8 +1,4 @@
 <main class="pagina">
-    <header>
-        <h1>Studietips</h1>
-        <p class="intro">Klik op een tip om de uitleg te lezen.</p>
-    </header>
 
     @for (groep of gegroepeerd; track groep.categorie) {
     <section class="groep" [attr.aria-labelledby]="'cat-' + groep.categorie">
