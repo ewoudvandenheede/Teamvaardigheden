@@ -1,1 +1,30 @@
-<p>studytips-page works!</p>
+<main class="pagina">
+    <header>
+        <h1>Studietips</h1>
+        <p class="intro">Klik op een tip om de uitleg te lezen.</p>
+    </header>
+
+    @for (groep of gegroepeerd; track groep.categorie) {
+    <section class="groep" [attr.aria-labelledby]="'cat-' + groep.categorie">
+        <h2 [id]="'cat-' + groep.categorie">{{ groep.categorie }}</h2>
+
+        <ul class="tips">
+            @for (tip of groep.tips; track tip.id) {
+            <li class="tip" [class.open]="isOpen(tip.id)">
+                <button type="button" class="tip-kop" [attr.aria-expanded]="isOpen(tip.id)"
+                    [attr.aria-controls]="'uitleg-' + tip.id" (click)="toggle(tip.id)">
+                    <span>{{ tip.tip }}</span>
+                    <span class="pijl" aria-hidden="true"></span>
+                </button>
+
+                <div class="uitleg-wrapper" [id]="'uitleg-' + tip.id" [attr.inert]="isOpen(tip.id) ? null : ''">
+                    <div class="uitleg">
+                        <p>{{ tip.uitleg }}</p>
+                    </div>
+                </div>
+            </li>
+            }
+        </ul>
+    </section>
+    }
+</main>
