@@ -1,1 +1,50 @@
-<p>task-page works!</p>
+<div class="task-container">
+  <h2>Mijn Takenoverzicht</h2>
+
+  <!-- Formulier voor Aanmaken / Bewerken -->
+  <div class="form-card">
+    <h3>{{ isEditing ? 'Taak Aanpassen' : 'Nieuwe Taak Toevoegen' }}</h3>
+    <form (ngSubmit)="saveTask()">
+      <div class="form-group">
+        <label for="title">Titel *</label>
+        <input id="title" type="text" [(ngModel)]="taskForm.title" name="title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Beschrijving</label>
+        <textarea id="description" [(ngModel)]="taskForm.description" name="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Einddatum *</label>
+        <input id="dueDate" type="date" [(ngModel)]="taskForm.dueDate" name="dueDate" required />
+      </div>
+
+      <div class="button-group">
+        <button type="submit">{{ isEditing ? 'Opslaan' : 'Toevoegen' }}</button>
+        <button type="button" *ngIf="isEditing" (click)="resetForm()">Annuleren</button>
+      </div>
+    </form>
+  </div>
+
+  <hr />
+
+  <!-- Geordende Takenlijst -->
+  <div class="task-list">
+    <h3>Geplande Taken (Geordend op datum)</h3>
+
+    <p *ngIf="tasks().length === 0">Nog geen taken aanwezig.</p>
+
+    <div *ngFor="let task of tasks()" class="task-card">
+      <div class="task-details">
+        <h4>{{ task.title }}</h4>
+        <p>{{ task.description }}</p>
+        <small><strong>Einddatum:</strong> {{ task.dueDate | date:'dd-MM-yyyy' }}</small>
+      </div>
+      <div class="task-actions">
+        <button (click)="editTask(task)">Bewerken</button>
+        <button class="delete-btn" (click)="deleteTask(task.id)">Verwijderen</button>
+      </div>
+    </div>
+  </div>
+</div>
