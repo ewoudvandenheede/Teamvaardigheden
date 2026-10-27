@@ -1,0 +1,163 @@
+:host {
+    display: block;
+}
+
+.task-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px;
+    color: #203b36;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Formulier (gebaseerd op .active-activity) */
+.form-card {
+    margin-top: 28px;
+    padding: 28px;
+    border-radius: 12px;
+    background-color: #e5efe7;
+    margin-bottom: 32px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #203b36;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid #d5e3db;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-family: inherit;
+    color: #203b36;
+}
+
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+    outline: 3px solid #b37425;
+    outline-offset: 1px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* Knoppen (gebaseerd op de bestaande button styling) */
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #285b48;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1b4234;
+}
+
+button:focus-visible {
+    outline: 3px solid #b37425;
+    outline-offset: 3px;
+}
+
+.delete-btn {
+    background-color: #a34242; /* Gedempte rode tint die past bij het kleurenpalet */
+}
+
+.delete-btn:hover {
+    background-color: #7d3333;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #d5e3db;
+    margin: 32px 0;
+}
+
+/* Takenlijst (gebaseerd op .activity-card) */
+.task-list {
+    margin-top: 28px;
+}
+
+.task-list > p {
+    color: #586963;
+    line-height: 1.6;
+}
+
+.task-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid #d5e3db;
+    border-radius: 12px;
+    background-color: #f7f9f5;
+    margin-bottom: 16px;
+}
+
+.task-details h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+}
+
+.task-details p {
+    line-height: 1.6;
+    color: #586963;
+    margin: 0 0 12px 0;
+}
+
+.task-details small {
+    font-weight: bold;
+    color: #203b36;
+}
+
+.task-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+/* Responsiviteit */
+@media (max-width: 750px) {
+    .task-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-actions {
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
