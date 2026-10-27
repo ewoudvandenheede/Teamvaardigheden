@@ -12,41 +12,93 @@ interface Activity {
   templateUrl: './pause-page.html',
   styleUrl: './pause-page.css',
 })
+
+
 export class PausePage implements OnDestroy {
   readonly activities: Activity[] = [
     {
       title: 'Ademhalingsoefening',
       description:
-        'Adem rustig vier seconden in en vier seconden uit. Volg twee ademrondes.',
+        'Neem twee minuten rust. Adem vier seconden in en vier seconden uit, gedurende vijftien ademrondes.',
       stepDuration: 4,
-      steps: [
-        'Adem rustig in door je neus.',
-        'Adem langzaam uit door je mond.',
-        'Adem opnieuw rustig in.',
-        'Adem langzaam uit en ontspan je schouders.',
-      ],
+      steps: Array.from({ length: 30 }, (_, index) =>
+        index % 2 === 0
+          ? 'Adem rustig in door je neus. Forceer niets.'
+          : 'Adem rustig uit en ontspan je schouders.',
+      ),
     },
     {
       title: 'Even bewegen',
       description:
-        'Kom los van je bureau met drie rustige bewegingen van tien seconden.',
-      stepDuration: 10,
+        'Kom drie minuten los van je bureau. Wissel elke dertig seconden van beweging en beweeg binnen je eigen grenzen.',
+      stepDuration: 30,
       steps: [
-        'Sta op en stap rustig op je plaats.',
+        'Sta rustig op en stap op je plaats.',
         'Rol je schouders langzaam naar achteren.',
-        'Schud je handen en benen ontspannen los.',
+        'Maak rustige cirkels met je polsen en open en sluit je handen.',
+        'Strek je armen voorzichtig omhoog en laat ze weer zakken.',
+        'Wandel even rustig door de kamer.',
+        'Schud je armen en benen los en kom rustig tot stilstand.',
       ],
     },
     {
       title: 'Zintuigenpauze',
       description:
-        'Verleg je aandacht naar je omgeving. Kijk, luister en voel.',
-      stepDuration: 15,
+        'Neem vijf minuten afstand van je studie. Besteed telkens één minuut aandacht aan je omgeving en jezelf.',
+      stepDuration: 60,
       steps: [
-        'Kijk om je heen en zoek vijf dingen die je ziet.',
-        'Luister aandachtig naar drie geluiden.',
-        'Voel je voeten op de grond en ontspan je schouders.',
+        'Kijk weg van je scherm. Zoek vijf dingen om je heen en bekijk hun kleuren en vormen.',
+        'Luister naar de geluiden in je omgeving. Welke klinken dichtbij en welke verder weg?',
+        'Voel je voeten op de grond en je lichaam op de stoel. Laat je schouders zakken.',
+        'Merk op hoe je vanzelf ademhaalt. Je hoeft je ademhaling niet te veranderen.',
+        'Kijk rustig om je heen en rek je zachtjes uit. Neem je tijd om weer verder te gaan.',
       ],
+    },
+    {
+      title: 'Workout',
+      description:
+        'Een workout van twintig minuten: twee rondes met tien oefeningen. ' +
+        'Wissel telkens dertig seconden bewegen af met dertig seconden rust. ' +
+        'Beweeg op je eigen tempo en kies de lichtere variant wanneer nodig.',
+      stepDuration: 30,
+      steps: Array.from({ length: 2 }, (_, round) => {
+        const exercises = [
+          'Stap op je plaats en beweeg je armen rustig mee.',
+
+          'Doe squats: buig rustig door je knieën en kom weer recht. ' +
+          'Zak alleen zo diep als comfortabel voelt.',
+
+          'Doe pompen tegen een muur of op je knieën. ' +
+          'Kies de variant die je gecontroleerd kunt uitvoeren.',
+
+          'Doe rustige jumping jacks. ' +
+          'Lichter: stap om de beurt zijwaarts zonder te springen.',
+
+          'Doe kleine sit-ups: lig op je rug met gebogen knieën en til ' +
+          'je schouders een klein stukje op. Trek niet aan je nek.',
+
+          'Stap afwisselend met één been naar achteren en terug. ' +
+          'Buig je knieën licht als dat comfortabel voelt.',
+
+          'Doe een plank op je knieën of tenen. ' +
+          'Neem tussendoor rust zodra je houding verslapt.',
+
+          'Doe rustige burpees: hurk, zet je handen neer, stap naar ' +
+          'een plank, stap terug en sta op. Springen hoeft niet.',
+
+          'Doe staande knieheffingen: til afwisselend je linker- en ' +
+          'rechterknie op en blijf rechtop staan.',
+
+          'Wandel rustig op je plaats en laat je ademhaling tot rust komen.',
+        ];
+
+        return exercises.flatMap((exercise, index) => [
+          `Ronde ${round + 1}/2 · Oefening ${index + 1}/10: ${exercise}`,
+          round === 1 && index === exercises.length - 1
+            ? 'Je bent klaar! Wandel nog even rustig en ontspan.'
+            : 'Rust even uit. Adem rustig en bereid je voor op de volgende oefening.',
+        ]);
+      }).flat(),
     },
   ];
 
@@ -55,6 +107,23 @@ export class PausePage implements OnDestroy {
   readonly currentStep = signal(0);
 
   private timer?: ReturnType<typeof setInterval>;
+
+  formatDuration(totalSeconds: number): string {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    const parts: string[] = [];
+
+    if (minutes > 0) {
+      parts.push(`${minutes} ${minutes === 1 ? 'minuut' : 'minuten'}`);
+    }
+
+    if (seconds > 0 || minutes === 0) {
+      parts.push(`${seconds} ${seconds === 1 ? 'seconde' : 'seconden'}`);
+    }
+
+    return parts.join(' en ');
+  }
 
   startActivity(activity: Activity): void {
     // Stop een vorige activiteit voordat de nieuwe begint.

@@ -14,8 +14,7 @@
 
             <p class="duration">
                 Duur:
-                {{ activity.steps.length * activity.stepDuration }}
-                seconden
+                {{ formatDuration(activity.steps.length * activity.stepDuration) }}
             </p>
 
             <button type="button" (click)="startActivity(activity)" [attr.aria-label]="'Start ' + activity.title">
@@ -35,7 +34,7 @@
         </p>
 
         <p class="timer" role="timer" aria-live="off">
-            {{ remainingSeconds() }} seconden over
+            Nog {{ formatDuration(remainingSeconds()) }}
         </p>
 
         <button type="button" (click)="stopActivity()">
