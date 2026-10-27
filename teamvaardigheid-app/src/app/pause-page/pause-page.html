@@ -1,1 +1,61 @@
-<p>pause-page works!</p>
+<section class="pause-page">
+    <h2>Tijd voor een pauze</h2>
+
+    <p class="intro">
+        Kies een activiteit om even te ontspannen en je focus te herstellen.
+    </p>
+
+    <div class="activities">
+        @for (activity of activities; track activity.title) {
+        <article class="activity-card">
+            <h3>{{ activity.title }}</h3>
+
+            <p>{{ activity.description }}</p>
+
+            <p class="duration">
+                Duur:
+                {{ activity.steps.length * activity.stepDuration }}
+                seconden
+            </p>
+
+            <button type="button" (click)="startActivity(activity)" [attr.aria-label]="'Start ' + activity.title">
+                Start activiteit
+            </button>
+        </article>
+        }
+    </div>
+
+    @if (selectedActivity(); as activity) {
+    <section class="active-activity" aria-labelledby="activity-title">
+        <h3 id="activity-title">{{ activity.title }}</h3>
+
+        @if (remainingSeconds() > 0) {
+        <p class="instruction" role="status">
+            {{ activity.steps[currentStep()] }}
+        </p>
+
+        <p class="timer" role="timer" aria-live="off">
+            {{ remainingSeconds() }} seconden over
+        </p>
+
+        <button type="button" (click)="stopActivity()">
+            Stop activiteit
+        </button>
+        } @else {
+        <p role="status">
+            Goed gedaan! Je activiteit is afgerond.
+        </p>
+
+        <div class="actions">
+            <button type="button" (click)="startActivity(activity)">
+                Opnieuw starten
+            </button>
+
+            <button type="button" (click)="stopActivity()">
+                Afronden
+            </button>
+        </div>
+        }
+    </section>
+    }
+</section>

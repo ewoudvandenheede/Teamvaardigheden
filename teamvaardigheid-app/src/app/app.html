@@ -1,45 +1,16 @@
-<!-- De navigatiebalk (zoals in je screenshot) -->
 <header class="top-nav">
   <h1>StudyFlow</h1>
+
   <nav>
-    <button routerLink="/">Home</button>
-    <button routerLink="/studietips">Studietips</button>
-    <button routerLink="/takenlijst">Takenlijst</button>
-    <button routerLink="/timer">Timer/Pomodoro</button>
-    <button routerLink="/pauze">Pauze</button>
-    <button routerLink="/contact">Contact-us</button>
+    <button type="button" routerLink="/">Home</button>
+    <button type="button" routerLink="/studietips">Studietips</button>
+    <button type="button" routerLink="/takenlijst">Takenlijst</button>
+    <button type="button" routerLink="/timer">Timer/Pomodoro</button>
+    <button type="button" routerLink="/pauze">Pauze</button>
+    <button type="button" routerLink="/contact">Contact-us</button>
   </nav>
 </header>
 
 <main class="container">
-  <!-- De introductie (Hero sectie) -->
-  <section class="hero-sectie">
-    <h2>Grip op je studie, focus op je doelen.</h2>
-    <p class="intro-tekst">Alles wat je nodig hebt om slimmer te studeren op één plek. Krijg overzicht, stop met uitstellen en haal je deadlines zonder de stress.</p>
-  </section>
-
-  <!-- De uitleg van de functies -->
-  <section class="functies-sectie">
-    <h3>Jouw ultieme digitale bureau</h3>
-    <p>Geen chaos meer van rondslingerende notities, tien verschillende apps en onduidelijke planningen. <strong>StudyFlow</strong> is speciaal gebouwd voor studenten die het maximale uit hun studietijd willen halen.</p>
-    
-    <div class="functies-grid">
-      <div class="functie-kaart">
-        <h4>✅ Overzichtelijke Takenlijsten</h4>
-        <p>Breek grote opdrachten en tentamenstof op in kleine, behapbare stappen. Vink je taken af en sluit je dag af met een voldaan gevoel.</p>
-      </div>
-
-      <div class="functie-kaart">
-        <h4>⏱️ Ingebouwde Focus Timer</h4>
-        <p>Zit je snel op je telefoon? Gebruik onze slimme Pomodoro timer. Werk in scherpe focusblokken van 25 of 50 minuten en neem op tijd pauze.</p>
-      </div>
-
-      <div class="functie-kaart">
-        <h4>💡 Bewezen Studietips</h4>
-        <p>Leer niet harder, maar slimmer. Ontdek praktische tips en technieken om je concentratie te verhogen en efficiënter te studeren.</p>
-      </div>
-    </div>
-  </section>
-
   <router-outlet></router-outlet>
 </main>
