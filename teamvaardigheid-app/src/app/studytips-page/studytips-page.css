@@ -1,0 +1,137 @@
+:host {
+    display: block;
+}
+
+.pagina {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px;
+    color: #203b36;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0 0 12px;
+}
+
+.intro {
+    margin: 0 0 32px;
+    color: #586963;
+    line-height: 1.6;
+}
+
+/* Categorieën */
+.groep {
+    margin-bottom: 32px;
+}
+
+.groep h2 {
+    margin: 0 0 20px;
+    padding-bottom: 8px;
+    font-size: 1.25rem;
+    border-bottom: 1px solid #d5e3db;
+}
+
+/* Tiplijst (gebaseerd op .task-card) */
+.tips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tip {
+    border: 1px solid #d5e3db;
+    border-radius: 12px;
+    background-color: #f7f9f5;
+    overflow: hidden;
+}
+
+.tip.open {
+    background-color: #e5efe7;
+}
+
+.tip-kop {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: #203b36;
+    font: inherit;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+
+.tip-kop:hover {
+    background-color: #e5efe7;
+}
+
+.tip-kop:focus-visible {
+    outline: 3px solid #b37425;
+    outline-offset: -3px;
+}
+
+/* Pijltje */
+.pijl {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #285b48;
+    border-bottom: 2px solid #285b48;
+    transform: rotate(45deg);
+    transition: transform 0.25s ease;
+}
+
+.tip.open .pijl {
+    transform: rotate(225deg);
+}
+
+/* Vloeiend uitklappen */
+.uitleg-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.25s ease;
+}
+
+.tip.open .uitleg-wrapper {
+    grid-template-rows: 1fr;
+}
+
+.uitleg {
+    overflow: hidden;
+}
+
+.uitleg p {
+    margin: 0;
+    padding: 0 24px 24px;
+    line-height: 1.6;
+    color: #586963;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pijl,
+    .uitleg-wrapper {
+        transition: none;
+    }
+}
+
+/* Responsiviteit */
+@media (max-width: 750px) {
+    .tip-kop {
+        padding: 16px 18px;
+    }
+
+    .uitleg p {
+        padding: 0 18px 18px;
+    }
+}
