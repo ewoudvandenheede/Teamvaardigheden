@@ -1,13 +1,16 @@
 <header class="top-nav">
-  <h1>StudyFlow</h1>
+  <!-- De titel is opgesplitst voor een modern 'logo' effect -->
+  <h1>
+    <span class="logo-light">Study</span><span class="logo-bold">Flow</span>
+  </h1>
 
   <nav>
-    <button type="button" routerLink="/">Home</button>
-    <button type="button" routerLink="/studietips">Studietips</button>
-    <button type="button" routerLink="/takenlijst">Takenlijst</button>
-    <button type="button" routerLink="/timer">Timer/Pomodoro</button>
-    <button type="button" routerLink="/pauze">Pauze</button>
-    <button type="button" routerLink="/contact">Contact-us</button>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/studietips" routerLinkActive="active">Studietips</a>
+    <a routerLink="/takenlijst" routerLinkActive="active">Takenlijst</a>
+    <a routerLink="/timer" routerLinkActive="active">Timer/Pomodoro</a>
+    <a routerLink="/pauze" routerLinkActive="active">Pauze</a>
+    <a routerLink="/contact" routerLinkActive="active">Contact-us</a>
   </nav>
 </header>
 

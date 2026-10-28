@@ -1,1 +1,25 @@
+/* 1. Algemene Reset & CSS Variabelen */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Kleurenpalet gebaseerd op je eerdere designs */
+    --text-dark: #203b36;
+    --text-muted: #586963;
+    --bg-page: #ffffff;
+    --bg-card-light: #f7f9f5;
+    --bg-card-dark: #e5efe7;
+    --border-soft: #d5e3db;
+    
+    --primary: #285b48;
+    --primary-light: #3a7a63;
+    --primary-hover: #1b4234;
+    --danger: #a34242;
+    --accent: #b37425; /* Oranje/bruine accentkleur */
+    
+    --font-main: Arial, sans-serif;
+}
 /* You can add global styles to this file, and also import other style files */
